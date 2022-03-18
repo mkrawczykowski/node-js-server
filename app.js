@@ -1,15 +1,14 @@
-const http = require('http');
-const port = 3000;
-const handler = (request, response) => {
-    console.log('new user!');
-    response.end('Hello node!');
-}
+const express = require('express');
+port = 3000;
 
-const server = http.createServer(handler);
-server.listen(port, (err) => {
-    if (err){
-        console.log('Damn! Something went wrong :(');
-    }
+const app = express();
 
-    console.log('Server is running...');
-});
+app.get('/', (req, res) => {  // homepage, could also be subpage, like /o-nas
+    res.send('Hello node, again!');
+})
+
+app.get('/kontakt', (req, res) => {
+    res.send('<h1>Kontakt</h1>');
+})
+
+app.listen(port);
